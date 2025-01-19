@@ -21,9 +21,9 @@ ENV HOME=/root \
     LANGUAGE=en_US.UTF-8 \
     LC_ALL=C.UTF-8 \
     DISPLAY=:0.0 \
-    DISPLAY_WIDTH=1024 \
-    DISPLAY_HEIGHT=768 \
-    RUN_XTERM=yes \
+    DISPLAY_WIDTH=600 \
+    DISPLAY_HEIGHT=600 \
+    RUN_XTERM=no \
     RUN_FLUXBOX=yes
 COPY . /app
 CMD ["/app/entrypoint.sh"]

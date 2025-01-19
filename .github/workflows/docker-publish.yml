@@ -1,17 +1,17 @@
-name: Build and Push Docker Image
+name: Build and Push to GHCR (Repository-Scoped)
 
 on:
   push:
     branches:
-      - master  # Trigger on push to the main branch
+      - master
 
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
 
     steps:
-      # Step 1: Checkout the code
-      - name: Checkout repository
+      # Step 1: Check out the repository
+      - name: Checkout code
         uses: actions/checkout@v3
 
       # Step 2: Log in to GitHub Container Registry
@@ -25,9 +25,9 @@ jobs:
       # Step 3: Build the Docker image
       - name: Build Docker image
         run: |
-          docker build -t ghcr.io/${{ github.repository_owner }}/docker-novnc:latest .
+          docker build -t ghcr.io/${{ github.repository_owner }}/${{ github.event.repository.name }}/docker-novnc:latest .
 
-      # Step 4: Push the Docker image to GitHub Container Registry
+      # Step 4: Push Docker image to GHCR
       - name: Push Docker image
         run: |
-          docker push ghcr.io/${{ github.repository_owner }}/docker-novnc:latest
+          docker push ghcr.io/${{ github.repository_owner }}/${{ github.event.repository.name }}/docker-novnc:latest
