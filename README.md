@@ -14,6 +14,7 @@ This image is intended to be used for displaying X11 applications from other con
 
 ## Usage
 
+
 ### Variables
 
 You can specify the following variables:

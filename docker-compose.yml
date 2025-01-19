@@ -15,6 +15,7 @@ services:
       # Adjust to your screen size
       - DISPLAY_WIDTH=1600
       - DISPLAY_HEIGHT=968
+      - RUN_XTERM=no
     ports:
       - "8080:8080"
     networks:
