@@ -58,4 +58,4 @@ jobs:
       # Step 4: Push Docker image to GHCR
       - name: Push Docker image
         run: |
-          docker push  ${{ env.REGISTRY }}/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:${{ env.TAG }} .
+          docker push  ${{ env.REGISTRY }}/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:${{ env.TAG }}
