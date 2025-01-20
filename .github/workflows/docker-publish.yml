@@ -49,6 +49,11 @@ jobs:
           echo "TAG=${TAG}" >> $GITHUB_ENV
         shell: bash
 
+      - name: Echo specific variables
+        run: |
+          echo "repo owner: {{ github.repository_owner }}"
+          echo "IMAGE_NAME: ${{ env.IMAGE_NAME }}"
+          echo "TAG: ${{ env.TAG }}"
 
       # Step 3: Build the Docker image
       - name: Build Docker image
