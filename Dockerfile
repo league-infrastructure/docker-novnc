@@ -26,5 +26,9 @@ ENV HOME=/root \
     RUN_XTERM=no \
     RUN_FLUXBOX=yes
 COPY . /app
+
+RUN cp /usr/share/novnc/vnc_lite.html  /usr/share/novnc/index.html
+
 CMD ["/app/entrypoint.sh"]
-EXPOSE 8080
+EXPOSE 6080
+EXPOSE 5900

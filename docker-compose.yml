@@ -1,24 +1,34 @@
-version: '2'
+
 services:
-  ide:
-    image: psharkey/intellij:latest
-#    image: psharkey/netbeans-8.1:latest
-    environment:
-      - DISPLAY=novnc:0.0
-    depends_on:
-      - novnc
-    networks:
-      - x11
   novnc:  
-    image: theasp/novnc:latest
+    build:
+        context: .
+        dockerfile: Dockerfile
+
+    image: novnc-service:latest
     environment:
       # Adjust to your screen size
       - DISPLAY_WIDTH=600
       - DISPLAY_HEIGHT=600
       - RUN_XTERM=no
+
     ports:
-      - "8080:8080"
+      - 6080 
+      - 5900
+    
+    labels:
+      caddy: novnc.do.jointheleague.org
+      caddy.@ws.0_header: Connection *Upgrade*
+      caddy.@ws.1_header: Upgrade websocket
+      caddy.0_reverse_proxy: "@ws {{upstreams 6080}}"
+      caddy.1_reverse_proxy: "{{upstreams 6080}}"
+
     networks:
       - x11
+      - caddy 
+
 networks:
   x11:
+    internal: true
+  caddy:
+    external: true
