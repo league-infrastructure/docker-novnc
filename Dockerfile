@@ -1,5 +1,12 @@
 FROM debian:bullseye
 
+# Make windows open in the upper-left, so if the viewport for the screen 
+# is smaller than the window, the window is not offscreen.
+ENV SDL_VIDEO_WINDOW_POS=0,0 
+
+# Make SDL not actually use the sound card.
+ENV SDL_AUDIODRIVER=dummy
+
 # Install git, supervisor, VNC, & X11 packages
 RUN set -ex; \
     apt-get update; \
