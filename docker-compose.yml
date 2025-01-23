@@ -18,10 +18,10 @@ services:
     
     labels:
       caddy: novnc.do.jointheleague.org
-      caddy.@ws.0_header: Connection *Upgrade*
-      caddy.@ws.1_header: Upgrade websocket
-      caddy.0_reverse_proxy: "@ws {{upstreams 6080}}"
-      caddy.1_reverse_proxy: "{{upstreams 6080}}"
+      caddy.handle_path.@ws.0_header: Connection *Upgrade*
+      caddy.handle_path.@ws.1_header: Upgrade websocket
+      caddy.handle_path.0_reverse_proxy: "@ws {{upstreams 6080}}"
+      caddy.handle_path.1_reverse_proxy: "{{upstreams 6080}}"
 
     networks:
       - x11
